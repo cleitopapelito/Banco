@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="py.com.cleito.activity" >
+    package="py.com.cleito.bank" >
 
     <application
         android:allowBackup="true"
@@ -17,12 +17,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activity2"
-            android:label="@string/title_activity_activity2" >
-        </activity>
-        <activity
             android:name=".ATM"
             android:label="@string/title_activity_atm" >
+        </activity>
+        <activity
+            android:name=".CreateUser"
+            android:label="@string/title_activity_create_user" >
         </activity>
     </application>
 

@@ -1,13 +1,41 @@
 <resources>
-    <string name="app_name">Activity</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="depo">Depositar</string>
-    <string name="reti">Retirar</string>
-    <string name="bala">Balance: </string>
-    <string name="gs">Gs.</string>
-    <string name="lala">lala</string>
+    <string name="app_name">Bankleito</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_activity2">Activity2</string>
+
+    <string name="aceptar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="crear_usuario">Crear Usuario</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="instruction">Debe ingresar el importe para depositar o retirar.</string>
+    <string name="limpiar">Limpiar Campos</string>
+    <string name="ok">Ok</string>
+    <string name="welcome">Bienvenido/a</string>
+
+    <string name="label_balance">Balance</string>
+    <string name="label_balance_e">Balance:</string>
+    <string name="label_depositar">Depositar</string>
+    <string name="label_depositar_e">Depositar:</string>
+    <string name="label_gs">Gs.</string>
+    <string name="label_password">Password</string>
+    <string name="label_password_e">Password:</string>
+    <string name="label_password_confirm">Confirmar</string>
+    <string name="label_password_confirm_e">Confirmar:</string>
+    <string name="label_retirar">Retirar</string>
+    <string name="label_retirar_e">Retirar:</string>
+    <string name="label_usuario">Usuario</string>
+    <string name="label_usuario_e">Usuario:</string>
+
+
     <string name="title_activity_atm">ATM</string>
+    <string name="title_activity_create_user">Bankleito - Crear Usuario</string>
+
+    <string name="error_confirm_empty">Debe confirmar el Password</string>
+    <string name="error_credentials">El Usuario o Password es incorrecto</string>
+    <string name="error_duplicated_user">El usuario ya existe</string>
+    <string name="error_password_empty">Debe ingresar un Password</string>
+    <string name="error_password_mismatch">Los passwords no coinciden</string>
+    <string name="error_user_empty">Debe ingresar un Usuario</string>
+
+    <string name="success_user">El Usuario ha sido creado</string>
+
 </resources>
