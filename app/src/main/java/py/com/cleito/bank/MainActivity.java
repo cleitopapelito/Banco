@@ -1,6 +1,8 @@
 package py.com.cleito.bank;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +14,12 @@ import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    Context context;
+    SharedPreferences sharedPref;
+
+    String usuarioPref = "";
+    String passwordPref = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +33,12 @@ public class MainActivity extends ActionBarActivity {
         Button btnLimpiar = (Button) findViewById(R.id.btnLimpiar);
         Button btnIngresar = (Button) findViewById(R.id.btnIngresar);
         Button btnCrearUsuario = (Button) findViewById(R.id.btnCrearUsuario);
+
+        context = getApplicationContext();
+        sharedPref = context.getSharedPreferences("pref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+
 
         btnIngresar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,11 +62,15 @@ public class MainActivity extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(), R.string.error_password_empty, Toast.LENGTH_SHORT).show();
                 }
 
-                if(!error && !User.existUser(user)){
+                //if(!error && !User.existUser(user)){
+                usuarioPref = sharedPref.getString("user", "N/A");
+                if(!error && usuarioPref.equals("N/A")){
                     error = true;
                     Toast.makeText(getApplicationContext(), R.string.error_credentials, Toast.LENGTH_SHORT).show();
                 }else{
-                    if(!error && User.valueOf(user).equals(password)){
+                    //if(!error && User.valueOf(user).equals(password)){
+                    passwordPref = sharedPref.getString("password","error");
+                    if(!error && !passwordPref.equals(password)){
                         error = true;
                         Toast.makeText(getApplicationContext(), R.string.error_credentials, Toast.LENGTH_SHORT).show();
                     }
@@ -110,4 +128,6 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }

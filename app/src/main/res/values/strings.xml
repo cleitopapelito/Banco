@@ -9,7 +9,7 @@
     <string name="instruction">Debe ingresar el importe para depositar o retirar.</string>
     <string name="limpiar">Limpiar Campos</string>
     <string name="ok">Ok</string>
-    <string name="welcome">Bienvenido/a</string>
+    <string name="welcome">Bienvenido/a </string>
 
     <string name="label_balance">Balance</string>
     <string name="label_balance_e">Balance:</string>

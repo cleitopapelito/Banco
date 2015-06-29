@@ -1,6 +1,9 @@
 package py.com.cleito.bank;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,13 +13,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import py.com.cleito.bank.R;
+
 
 public class CreateUser extends ActionBarActivity {
+
+    Context context;
+    SharedPreferences sharedPref;
+    String usuarioPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_create_user);
 
         Button btnLimpiar = (Button) findViewById(R.id.btnLimpiar);
@@ -25,6 +33,10 @@ public class CreateUser extends ActionBarActivity {
         btnCrearUsuario.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                context = getApplicationContext();
+                sharedPref = context.getSharedPreferences("pref", MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPref.edit();
+
                 Boolean error = false;
                 EditText edtUsuario = (EditText) findViewById(R.id.edtUsuario);
                 EditText edtPassword = (EditText) findViewById(R.id.edtPassword);
@@ -44,7 +56,8 @@ public class CreateUser extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(), R.string.error_password_empty, Toast.LENGTH_SHORT).show();
                 }
 
-                if(!error && User.existUser(user)){
+                usuarioPref = sharedPref.getString("user", "N/A");
+                if(!error && !usuarioPref.equals("N/A")){
                     error = true;
                     Toast.makeText(getApplicationContext(), R.string.error_duplicated_user, Toast.LENGTH_SHORT).show();
                 }
@@ -59,10 +72,10 @@ public class CreateUser extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(), R.string.error_password_mismatch, Toast.LENGTH_SHORT).show();
                 }
 
-
-
-                //TODO: Todo bola jamás creo nada.
                 if(!error){
+                    editor.putString("user", user);
+                    editor.putString("password", password);
+                    editor.commit();
                     Toast.makeText(getApplicationContext(), R.string.success_user, Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(CreateUser.this, MainActivity.class);
                     startActivity(i);

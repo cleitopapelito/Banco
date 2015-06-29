@@ -1,5 +1,6 @@
 package py.com.cleito.bank;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -27,8 +28,10 @@ public class ATM extends ActionBarActivity {
 
         final Button btnDepositar = (Button) findViewById(R.id.btnDepositar);
         final Button btnRetirar = (Button) findViewById(R.id.btnRetirar);
+        TextView userLogged = (TextView) findViewById(R.id.userLogged);
+        userLogged.setText(getIntent().getStringExtra("name"));
 
-
+       //TODO: Recuperar valor del intent user
 
 
         btnDepositar.setOnClickListener(new View.OnClickListener() {
@@ -44,7 +47,7 @@ public class ATM extends ActionBarActivity {
                 balance = balance + montoObtenido;
                 txtBalance.setText(balance.toString());
                 edtMonto.setText("");
-                Toast.makeText(getApplicationContext(),"Gracias por la preferencia! :)", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Gracias por la preferencia! :)", Toast.LENGTH_SHORT).show();
             }
         });
 
