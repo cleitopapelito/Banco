@@ -29,7 +29,7 @@ public class ATM extends ActionBarActivity {
         final Button btnDepositar = (Button) findViewById(R.id.btnDepositar);
         final Button btnRetirar = (Button) findViewById(R.id.btnRetirar);
         TextView userLogged = (TextView) findViewById(R.id.userLogged);
-        userLogged.setText(getIntent().getStringExtra("name"));
+        userLogged.setText(getIntent().getStringExtra("user"));
 
        //TODO: Recuperar valor del intent user
 

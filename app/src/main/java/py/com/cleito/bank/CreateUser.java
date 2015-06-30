@@ -51,15 +51,15 @@ public class CreateUser extends ActionBarActivity {
                     Toast.makeText(getApplicationContext(), R.string.error_user_empty, Toast.LENGTH_SHORT).show();
                 }
 
-                if(!error && password.equals("")){
-                    error = true;
-                    Toast.makeText(getApplicationContext(), R.string.error_password_empty, Toast.LENGTH_SHORT).show();
-                }
-
-                usuarioPref = sharedPref.getString("user", "N/A");
+                usuarioPref = sharedPref.getString(user, "N/A");
                 if(!error && !usuarioPref.equals("N/A")){
                     error = true;
                     Toast.makeText(getApplicationContext(), R.string.error_duplicated_user, Toast.LENGTH_SHORT).show();
+                }
+
+                if(!error && password.equals("")){
+                    error = true;
+                    Toast.makeText(getApplicationContext(), R.string.error_password_empty, Toast.LENGTH_SHORT).show();
                 }
 
                 if(!error && confirm.equals("")){
@@ -73,8 +73,7 @@ public class CreateUser extends ActionBarActivity {
                 }
 
                 if(!error){
-                    editor.putString("user", user);
-                    editor.putString("password", password);
+                    editor.putString(user, password);
                     editor.commit();
                     Toast.makeText(getApplicationContext(), R.string.success_user, Toast.LENGTH_SHORT).show();
                     Intent i = new Intent(CreateUser.this, MainActivity.class);
@@ -90,9 +89,11 @@ public class CreateUser extends ActionBarActivity {
             public void onClick(View view) {
                 EditText edtUsuario = (EditText) findViewById(R.id.edtUsuario);
                 EditText edtPassword = (EditText) findViewById(R.id.edtPassword);
+                EditText edtConfirm = (EditText) findViewById(R.id.edtConfirm);
 
                 edtUsuario.setText("");
                 edtPassword.setText("");
+                edtConfirm.setText("");
             }
         });
 

@@ -18,9 +18,6 @@ public class MainActivity extends ActionBarActivity {
     Context context;
     SharedPreferences sharedPref;
 
-    String usuarioPref = "";
-    String passwordPref = "";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,19 +60,16 @@ public class MainActivity extends ActionBarActivity {
                 }
 
                 //if(!error && !User.existUser(user)){
-                usuarioPref = sharedPref.getString("user", "N/A");
+                String usuarioPref = sharedPref.getString(user, "N/A");
                 if(!error && usuarioPref.equals("N/A")){
                     error = true;
                     Toast.makeText(getApplicationContext(), R.string.error_credentials, Toast.LENGTH_SHORT).show();
                 }else{
-                    //if(!error && User.valueOf(user).equals(password)){
-                    passwordPref = sharedPref.getString("password","error");
-                    if(!error && !passwordPref.equals(password)){
+                    if(!error && !usuarioPref.equals(password)){
                         error = true;
                         Toast.makeText(getApplicationContext(), R.string.error_credentials, Toast.LENGTH_SHORT).show();
                     }
                 }
-
 
                 if(!error){
                     Intent i = new Intent(MainActivity.this, ATM.class);

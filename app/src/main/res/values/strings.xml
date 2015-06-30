@@ -27,7 +27,8 @@
 
 
     <string name="title_activity_atm">ATM</string>
-    <string name="title_activity_create_user">Bankleito - Crear Usuario</string>
+    <string name="title_activity_create_user">Crear Usuario</string>
+    <string name="title_activity_main">Bankleito</string>
 
     <string name="error_confirm_empty">Debe confirmar el Password</string>
     <string name="error_credentials">El Usuario o Password es incorrecto</string>
